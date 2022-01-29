@@ -64,10 +64,10 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1> App Todo Django + React + Heroku </h1>      
         <div className="d-flex">
         <img src={reactLogo} className="App-logo" alt="logo" />
         </div>
+        <h1> App Todo Django + React + Heroku </h1>      
         <br />
 
         {/* Formulario */}
