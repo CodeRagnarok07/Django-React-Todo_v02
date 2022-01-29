@@ -1,2 +1,2 @@
 release: python manage.py migrate
-web: gunicorn DJANGO_PROJECT_NAME.wsgi --log-file -
+web: gunicorn backend.wsgi --log-file -
