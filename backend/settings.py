@@ -12,18 +12,21 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 
-import imp
 import django_heroku        ## HEROKU DEPLOY
 import dj_database_url      ## HEROKU DEPLOY
 
 from pathlib import Path
-
 import os
+
+
+
 import environ   #add this
 env = environ.Env(                #add this
     # set casting, default value
     DEBUG=(bool, False)         # add this
 )
+
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -39,12 +42,11 @@ environ.Env.read_env(os.path.join(BASE_DIR, '.env'))  #add this
 SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
+
 DEBUG = env('DEBUG') 
 
-ALLOWED_HOSTS = [env('ALLOWED_HOSTS')]
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS =[ env('ALLOWED_HOSTS') ]
 
-print(ALLOWED_HOSTS)
 
 
 # Application definition
@@ -97,6 +99,14 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 DATABASES = {}
 # Usa la variable de entorno DATABASE_URL="esta"
 django_heroku.settings(locals())
@@ -104,7 +114,9 @@ options = DATABASES['default'].get('OPTIONS', {})
 options.pop('sslmode', None)
 DATABASES['default'] = dj_database_url.config(conn_max_age=600)
 
+
 # Option 2
+
 CORS_ORIGIN_ALLOW_ALL = True
 
 
