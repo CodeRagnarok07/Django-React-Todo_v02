@@ -1,11 +1,8 @@
 {
   "name": "frontend",
   "version": "0.1.0",
-  "engines": {
-    "npm": "8.x",
-    "node": "16.x"
-  },
   "private": true,
+  "proxi": "http://127.0.0.1:8000/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
@@ -25,6 +22,10 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
+  },
+  "engines": {
+    "node": "16.x",
+    "npm": "8.x"
   },
   "eslintConfig": {
     "extends": [

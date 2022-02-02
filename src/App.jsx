@@ -2,8 +2,12 @@ import reactLogo from './react.svg';
 import './App.css';
 import { useState, useEffect } from 'react';
 
-const axios = require('axios')
+//const axios = require('axios')
 
+import axios from 'axios'
+
+axios.defaults.xsrfCookieName = 'csrftoken'
+axios.defaults.xsrfHeaderName = 'X-CSRFToken'
 
 
 function App() {
@@ -11,7 +15,7 @@ function App() {
   // Get
   const [todoList, setTodoList] = useState([])
   const getList = () => {
-    axios.get(`http://127.0.0.1:8000/todo/`)
+    axios.get(`http://127.0.0.1:8000/app/todo/`)
     .catch(err => console.log(err))
     .then(res => {
       const datos = res.data
@@ -21,7 +25,7 @@ function App() {
 
   // Delete
   const delteTask = (id) => {
-    axios.delete(`http://127.0.0.1:8000/todo/${id}`)
+    axios.delete(`http://127.0.0.1:8000/app/todo/${id}`)
     .then(getList())
     getList()
     }
@@ -32,7 +36,7 @@ function App() {
     "title" : ""
   })
   const newTask = () =>{
-    axios.post(`http://127.0.0.1:8000/todo/`, target)
+    axios.post(`http://127.0.0.1:8000/app/todo/`, target)
     .catch(err => console.log(err))
     .then(getList())
   }
@@ -41,7 +45,7 @@ function App() {
   const putTask = ()=>{
     console.log(target)
     axios
-    .put(`http://localhost:8000/todo/${target.id}/`, target)
+    .put(`http://localhost:8000/app/todo/${target.id}/`, target)
     .catch(err => console.log(err))
     .then(getList());
   }
